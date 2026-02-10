@@ -1,6 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react'
+import { role } from "@/lib/data";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 const menuItems = [
   {
@@ -126,6 +127,7 @@ const Menu = () => {
             {i.title}
           </span>
           {i.items.map((item) => {
+            if (item.visible.includes(role)) {
               return (
                 <Link
                   href={item.href}
@@ -136,12 +138,12 @@ const Menu = () => {
                   <span className="hidden lg:block">{item.label}</span>
                 </Link>
               );
-            
+            }
           })}
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;
